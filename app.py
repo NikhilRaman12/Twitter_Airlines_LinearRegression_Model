@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 
 # Page configuration
@@ -20,10 +20,8 @@ Enter a tweet below or select a sample to see the prediction.
 
 # Load model and vectorizer
 try:
-    with open("model.pkl", "rb") as f:
-        model = pickle.load(f)
-    with open("vectorizer.pkl", "rb") as f:
-        vectorizer = pickle.load(f)
+    model = joblib.load("model.pkl")
+    vectorizer = joblib.load("vectorizer.pkl")
 except FileNotFoundError:
     st.error("Model files not found. Please ensure 'model.pkl' and 'vectorizer.pkl' are present.")
     st.stop()
