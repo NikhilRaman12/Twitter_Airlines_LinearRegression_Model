@@ -4,17 +4,16 @@ import pandas as pd
 
 # Page config
 st.set_page_config(
-    page_title="Twitter Sentiment Classifier",
+    page_title="Twitter Sentiment Score Predictor",
     layout="centered"
 )
 
-# Title and description
-st.title("Twitter Sentiment Classifier")
-st.subheader("Analyze sentiment from airline-related tweets using machine learning")
+st.title("Twitter Sentiment Score Predictor")
+st.subheader("Predict a sentiment score from airline-related tweets using Linear Regression")
 
 st.markdown("""
-This application uses a logistic regression model trained on TF-IDF features to classify tweets into **positive**, **negative**, or **neutral** sentiments.  
-Enter a tweet below or select a sample to see the prediction.
+This application uses a **Linear Regression** model trained on TF-IDF features and one-hot encoded metadata  
+to predict a **numerical sentiment score** for airline-related tweets.
 """)
 
 # Load model and vectorizer
@@ -24,7 +23,7 @@ try:
     with open("vectorizer.pkl", "rb") as f:
         vectorizer = pickle.load(f)
 except Exception as e:
-    st.error("Model files not found. Please ensure 'model.pkl' and 'vectorizer.pkl' are in the root directory.")
+    st.error(f"Model loading failed: {e}")
     st.stop()
 
 # Sample tweets
@@ -36,20 +35,18 @@ sample_tweets = [
     "Terrible experience with American Airlines."
 ]
 
-selected_sample = st.selectbox("Or choose a sample tweet:", [""] + sample_tweets)
+selected_sample = st.sidebar.selectbox("Choose a sample tweet:", [""] + sample_tweets)
+tweet_input = st.text_input("Enter a tweet for sentiment scoring:")
 
-# Text input
-tweet_input = st.text_input("Enter a tweet for sentiment analysis:")
-
-# Use sample if selected
 tweet = tweet_input if tweet_input else selected_sample
 
 # Prediction
 if tweet:
     try:
+        # Vectorize text only (assuming model was trained on text vectors)
         transformed = vectorizer.transform([tweet])
         prediction = model.predict(transformed)[0]
-        st.markdown(f"**Predicted Sentiment:** `{prediction}`")
+        st.markdown(f"**Predicted Sentiment Score:** `{round(prediction, 3)}`")
     except Exception as e:
         st.error(f"Prediction failed: {e}")
 
@@ -57,7 +54,8 @@ if tweet:
 st.markdown("---")
 st.markdown("""
 **Author**: Nikhil Raman  
-**Model**: Logistic Regression  
+**Model**: Linear Regression  
 **Deployment**: Streamlit Cloud  
-**Stack**: Python, scikit-learn, pandas, TF-IDF
+**Stack**: Python, scikit-learn, pandas, TF-IDF  
+**Purpose**: Numeric sentiment scoring for AIML portfolio
 """)
