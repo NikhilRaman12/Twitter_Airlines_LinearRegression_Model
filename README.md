@@ -1,80 +1,108 @@
-✈️ Twitter Airlines Sentiment Classifier
+# ✈️ Twitter Airlines Sentiment Classifier
 
-A machine learning web application that classifies airline-related tweets into positive, negative, or neutral sentiments. This project showcases NLP techniques, model deployment, and end-to-end MLOps workflow using Python and Streamlit.
+A machine learning web application that classifies airline-related tweets into **positive**, **neutral**, or **negative** sentiments. This project demonstrates practical NLP techniques, model experimentation, and full-stack deployment using **Python**, **scikit-learn**, and **Streamlit**.
 
-🚀 Live Demo
+🚀 **Live Demo**  
+🔗 [Streamlit App](https://your-streamlit-link-here)
 
-🔗 Streamlit App
+---
 
-📋 Overview
+## 📋 Project Overview
 
-Goal: Build and deploy a sentiment analysis model for airline-related tweets.
+- **Objective**: Build and deploy a sentiment analysis model for airline-related tweets using supervised machine learning.  
+- **Dataset**: [Twitter US Airline Sentiment](https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment) – over 14,000 labeled tweets.  
+- **Approach**:  
+  - Preprocessing with **TF-IDF vectorization**  
+  - Model experimentation with both **Linear Regression** and **Logistic Regression**  
+  - Final deployment using **Logistic Regression**, as sentiment is a **categorical** output, not continuous.
 
-Dataset: Twitter US Airline Sentiment
-.
+---
 
-Approach: TF-IDF vectorization + Logistic Regression for robust text classification.
+## 🔍 Modeling Journey
 
-Deployment: Hosted on Streamlit Cloud with GitHub for version control.
+| Model              | Purpose                            | Outcome                         |
+|-------------------|-------------------------------------|----------------------------------|
+| Linear Regression | Initial baseline for sentiment scoring | Accuracy: ~9.6% (poor fit)       |
+| Logistic Regression | Final model for classification     | Accuracy: **79.5%** (robust fit) |
 
-✨ Key Features
+✅ Logistic Regression was selected for deployment due to its superior performance on categorical sentiment labels.
 
-📝 Custom Tweet Analysis – Enter text and get instant predictions.
+---
 
-⚡ Real-Time Sentiment Classification – Immediate output for positive, negative, or neutral sentiment.
+## ✨ Key Features
 
-☁️ Cloud-Hosted Web App – Accessible anywhere with no local setup required.
+- 📝 **Custom Tweet Analysis** – Enter any tweet and receive instant sentiment prediction.  
+- ⚡ **Real-Time Classification** – Immediate output for positive, neutral, or negative sentiment.  
+- ☁️ **Cloud-Hosted Web App** – Accessible anywhere via Streamlit Cloud.  
+- 🔗 **Reproducible Workflow** – Clean, documented code with Git-based version control.
 
-🔗 Reproducible Workflow – Clean, documented code with Git-based version tracking.
+---
 
-🛠️ Tech Stack
-Category	Tools Used
-Programming	Python
-ML Libraries	scikit-learn, pandas
-Deployment	Streamlit Cloud
-Version Control	Git & GitHub
-📂 Repository Structure
+## 🛠️ Tech Stack
+
+| Category         | Tools Used                          |
+|------------------|-------------------------------------|
+| Programming      | Python                              |
+| ML Libraries     | scikit-learn, pandas, joblib        |
+| Deployment       | Streamlit Cloud                     |
+| Version Control  | Git & GitHub                        |
+
+---
+
+## 📂 Repository Structure
+
+```
 Twitter_Airlines_LinearRegression_Model/
 ├── app.py                 # Streamlit web application  
 ├── requirements.txt       # Dependencies  
-├── sentiment_model.pkl    # Trained ML model  
+├── model.pkl              # Trained Logistic Regression model  
 ├── vectorizer.pkl         # TF-IDF vectorizer  
 ├── README.md              # Documentation  
 └── data/                  # (Optional) Dataset or samples  
+```
 
-⚙️ Running the Project Locally
+---
 
-1️⃣ Clone the repository
+## ⚙️ Running the Project Locally
 
+```bash
+# 1️⃣ Clone the repository
 git clone https://github.com/NikhilRaman12/Twitter_Airlines_LinearRegression_Model.git
 cd Twitter_Airlines_LinearRegression_Model
 
-
-2️⃣ Install dependencies
-
+# 2️⃣ Install dependencies
 pip install -r requirements.txt
 
-
-3️⃣ Run the Streamlit app
-
+# 3️⃣ Run the Streamlit app
 streamlit run app.py
-:
+```
 
-👤 Author
+---
 
-Nikhil Raman – Data Analyst | Machine Learning Enthusiast
+## 👤 Author
 
-📧 Email: nikhilraman1203@gmail.com
+**Nikhil Raman** – Data Analyst | AIML Engineer in Progress  
+📧 Email: nikhilraman1203@gmail.com  
+🔗 [LinkedIn](https://linkedin.com/in/nikhilraman)  
+💻 [GitHub](https://github.com/NikhilRaman12)  
+📊 [Tableau](https://public.tableau.com/profile/nikhil.raman)  
+📈 [Kaggle](https://kaggle.com/nikhilramank)
 
-🔗 LinkedIn: linkedin.com/in/nikhilraman
+---
 
-💻 GitHub: github.com/NikhilRaman12
+## 🤝 Contributing
 
-📊 Tableau: public.tableau.com/profile/nikhil.raman
+Contributions, suggestions, and feature requests are welcome.  
+Fork this repository, open an issue, or submit a pull request to collaborate.
 
-📈 Kaggle: kaggle.com/nikhilramank
+---
 
+##  Why This Project Matters
 
-🤝 Contributing
+This project showcases:
+- End-to-end ML workflow from data preprocessing to deployment  
+- Model selection based on problem type (regression vs classification)  
+- Real-time NLP application using open-source tools  
+- Resilience through debugging, version control, and iterative improvement
 
-Contributions, suggestions, and feature requests are welcome. Fork this repository, open an issue, or submit a pull request to collaborate.
+> 🔥 Built with precision, deployed with purpose—this is more than a demo. It’s a recruiter-ready showcase of AIML engineering.
